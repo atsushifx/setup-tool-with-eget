@@ -1,10 +1,10 @@
 // vitest.config.base.ts
 // @(#) : vitest config for textlint filter rule plugin
 //
-// @version   1.0.2
-// @since     2025-04-12
-// @author    atsushifx <atsushifx@gmail.com>
-// @license   MIT
+// @version 1.0.0
+// @since   2025-05-14
+// @author  atsushifx <https://github.com/atsushifx>
+// @license MIT
 //
 // @description<<
 //

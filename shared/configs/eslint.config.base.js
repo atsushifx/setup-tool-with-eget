@@ -1,10 +1,10 @@
-// /shared/configs/eslint.config.base.js
+// src: /shared/configs/eslint.config.base.js
 //
 // @(#) : ESLint flat config for TypeScript workspace
 //
 // @version   1.0.0
-// @since     2025-04-12
-// @author    atsushifx <atsushifx@gmail.com>
+// @since     2025-05-14
+// @author    atsushifx <https://github.com/atsushifx>
 // @license   MIT
 //
 // @description<<

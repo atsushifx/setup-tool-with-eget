@@ -16,6 +16,6 @@
     "test:ci": "pnpm exec vitest run",
     "test:develop": "pnpm exec vitest run --config ./vitest.config.unit.ts",
     "test:watch": "pnpm exec vitest --watch",
-    "sync:configs": "bash ../../../scripts/sync_configs.sh ."
+    "sync:configs": "bash ../../scripts/sync_configs.sh . "
   }
 }

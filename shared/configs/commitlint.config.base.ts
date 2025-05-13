@@ -1,10 +1,10 @@
 // /shared/configs/commitlint.config.base.ts
 // @(#) : commitlint configuration for this workspace
 /**
- * @version   1.0.0
- * @author    atsushifx <atsushifx@gmail.com>
- * @since     2025-04-12
- * @license   MIT
+ * @version 1.0.0
+ * @author  atsushifx <atsushifx@gmail.com>
+ * @since   2025-05-14
+ * @license MIT
  *
  * @description<<
  *

@@ -1,8 +1,8 @@
 // @(#) : tsup config
 /**
  * @version   1.0.0
- * @author    atsushifx <atsushifx@gmail.com>
- * @since     2025-04-12
+ * @author    atsushifx <https://github.com/atsushifx>
+ * @since     2025-05-14
  * @license   MIT
  *
  * @description<<

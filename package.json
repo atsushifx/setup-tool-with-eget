@@ -7,14 +7,6 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
-  "scripts": {
-    "build": "tsup src/index.ts --format esm --dts --out-dir dist",
-    "clean": "rimraf dist",
-    "test": "vitest",
-    "lint": "eslint . --ext .ts,.js,.cjs,.mjs",
-    "format": "dprint fmt",
-    "typecheck": "tsc --noEmit"
-  },
   "keywords": [
     "github-action",
     "eget",
@@ -24,12 +16,12 @@
   ],
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {
-    "@commitlint/types": "^19.8.0",
+    "@commitlint/types": "^19.8.1",
     "@eslint/js": "^9.26.0",
     "@secretlint/secretlint-rule-preset-recommend": "^9.3.2",
     "@textlint/types": "^14.7.1",
-    "@typescript-eslint/eslint-plugin": "^8.32.0",
-    "@typescript-eslint/parser": "^8.32.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
     "cspell": "^8.19.4",
     "eslint": "^9.26.0",
     "eslint-import-resolver-typescript": "^4.3.4",
@@ -39,5 +31,24 @@
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vitest": "^3.1.3"
+  },
+  "scripts": {
+    "build": "pnpm run build:cjs && pnpm run build:esm",
+    "build:cjs": "tsup --config tsup.config.ts",
+    "build:esm": "tsup --config tsup.config.module.ts",
+    "clean": "rimraf lib module",
+    "format:dprint": "dprint fmt",
+    "check:dprint": "dprint check",
+    "check:types": "tsc --noEmit",
+    "check:spellcheck": "pnpm exec cspell --config .vscode/cspell.json",
+    "lint": "pnpm exec eslint --cache --cache-location .cache/eslint-cache/ ",
+    "lint:types": "pnpm exec eslint --config ./eslint.config.typed.js --cache --cache-location .cache/eslint-cache/ ",
+    "lint:fix": "pnpm run lint -- --fix",
+    "lint:secrets": "secretlint --maskSecrets --secretlintignore .gitignore **/*",
+    "test": "pnpm run test:develop && pnpm run test:ci",
+    "test:ci": "pnpm exec vitest run",
+    "test:develop": "pnpm exec vitest run --config ./vitest.config.unit.ts",
+    "test:watch": "pnpm exec vitest --watch",
+    "sync:configs": "bash ../../../scripts/sync_configs.sh ."
   }
 }
