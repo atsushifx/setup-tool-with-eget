@@ -1,0 +1,15 @@
+    textlint:
+      glob: "**/*.md"
+      run: >
+        textlint
+        --config ./configs/textlintrc.yaml
+        --cache
+        --cache-location .cache/textlint_cache
+        "{staged_files}"
+
+    markdownlint:
+      glob: "**/*.md"
+      run: >
+        markdownlint-cli2
+        --config ./configs/.markdownlint.yaml
+        "{staged_files}"
