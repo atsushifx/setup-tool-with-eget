@@ -1,0 +1,51 @@
+{
+  "name": "@aglabo-actions/tool-installer",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Universal tool installer framework for GitHub Actions (eget-based).",
+  "author": "atsushifx <https://github.com/atsushifx>",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "module": "./module/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./module/index.js",
+      "types": "./lib/index.d.ts"
+    }
+  },
+  "files": [
+    "lib",
+    "module"
+  ],
+  "scripts": {
+    "build": "pnpm run build:cjs && pnpm run build:esm",
+    "build:cjs": "tsup --config ./configs/tsup.config.ts",
+    "build:esm": "tsup --config ./configs/tsup.config.module.ts",
+    "clean": "rimraf lib module",
+    "format:dprint": "dprint fmt",
+    "check:dprint": "dprint check",
+    "check:types": "tsc --noEmit",
+    "check:spellcheck": "pnpm exec cspell --config .vscode/cspell.json",
+    "lint": "pnpm exec eslint --cache --cache-location .cache/eslint-cache/ ",
+    "lint:fix": "pnpm run lint -- --fix",
+    "lint:types": "pnpm exec eslint --config ./configs/eslint.config.typed.js --cache --cache-location .cache/eslint-cache/ ",
+    "lint:secrets": "secretlint --maskSecrets --secretlintignore .gitignore **/*",
+    "test": "pnpm run test:develop && pnpm run test:ci",
+    "test:ci": "pnpm exec vitest run --config ./configs/vitest.config.ci.ts",
+    "test:develop": "pnpm exec vitest run --config ./configs/vitest.config.unit.ts",
+    "test:watch": "pnpm exec vitest --watch",
+    "sync:configs": "bash ../../../scripts/sync_configs.sh . "
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/io": "^1.1.2",
+    "@actions/tool-cache": "^2.0.1"
+  },
+  "devDependencies": {
+    "tsup": "^7.2.0",
+    "vitest": "^1.0.0"
+  }
+}

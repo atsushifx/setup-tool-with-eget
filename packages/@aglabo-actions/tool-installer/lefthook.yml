@@ -1,0 +1,31 @@
+## @(#) : lefthook config
+#
+# @version 1.0.0
+# @author  atsushifx <atsushifx@gmail.com>
+# @date    2024-02-05
+# @license MIT
+#
+# @desc<<
+#
+# Configuration for Lefthook, a tool to manage and run Git hooks.
+# Ensures hooks are consistently applied across all repositories
+# for tasks like linting, testing, and formatting.
+#
+#<<
+
+pre-commit:
+  parallel: true
+  commands:
+    gitleaks:
+      run: gitleaks protect --staged
+
+    secretlint:
+      glob: "**/*"
+      run: secretlint --maskSecrets --secretlintignore .gitignore "{staged_files}"
+
+# check commit message style
+commit-msg:
+  parallel: true
+  commands:
+    commitlint:
+      run: commitlint -e

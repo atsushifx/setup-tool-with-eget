@@ -1,0 +1,37 @@
+{
+  "@(#)": "tsconfig.json: for @textlint/e2etest",
+  "extends": "../../../shared/configs/tsconfig.base.json",
+  // directory definition
+  "compilerOptions": {
+    // in/out dir
+    "rootDir": ".",
+    "outDir": "lib",
+    // aliases
+    "baseUrl": "./",
+    "paths": {
+      // ローカルのプラグイン、ルール
+      "@/*": [
+        "src/*"
+      ],
+      // Monorepo 共有用
+      "@shared/*": [
+        "../../../shared/*"
+      ]
+    },
+    // incremental build info
+    "tsBuildInfoFile": ".cache/tsbuildinfo"
+  },
+  // files
+  "include": [
+    "src/**/*",
+    "tests/**/*"
+  ],
+  "exclude": [
+    ".git",
+    "node_modules",
+    "lib",
+    "module"
+  ],
+  // references
+  "references": []
+}

@@ -1,0 +1,35 @@
+// src: shared/types/tool-installer.types.ts
+// @(#) : textlint plugin markdown types
+//
+// @version   1.0.0
+// @since     2025-05-q4
+// @author    atsushifx <https://github.com/atsushifx>
+// @license   MIT
+//
+// @description<<
+//
+//
+//
+// <<
+
+export type InstallMethod = 'eget' | 'script' | 'installer';
+
+export interface InstallOptions {
+  version?: string;
+  installDir: string;
+}
+
+export interface Installer {
+  install(tool: string, opts?: InstallOptions): Promise<void>;
+}
+
+export interface ScriptInstallSpec {
+  url: string;
+  shell?: 'bash' | 'pwsh';
+}
+
+export interface InstallerSpec {
+  url: string;
+  extract?: 'zip' | 'tar.gz' | 'tgz' | 'tar.bz2' | 'pkg' | '7z' | false;
+  commandLine: string;
+}
