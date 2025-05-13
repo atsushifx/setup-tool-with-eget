@@ -1,0 +1,43 @@
+{
+  "name": "setup-tool-with-eget",
+  "private": true,
+  "version": "0.1.0",
+  "description": "GitHub Action to install CLI tools via eget (monorepo package)",
+  "author": "atsushifx <https://github.com/atsushifx>",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --out-dir dist",
+    "clean": "rimraf dist",
+    "test": "vitest",
+    "lint": "eslint . --ext .ts,.js,.cjs,.mjs",
+    "format": "dprint fmt",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "github-action",
+    "eget",
+    "cli-installer",
+    "typescript",
+    "monorepo"
+  ],
+  "packageManager": "pnpm@10.10.0",
+  "devDependencies": {
+    "@commitlint/types": "^19.8.0",
+    "@eslint/js": "^9.26.0",
+    "@secretlint/secretlint-rule-preset-recommend": "^9.3.2",
+    "@textlint/types": "^14.7.1",
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "@typescript-eslint/parser": "^8.32.0",
+    "cspell": "^8.19.4",
+    "eslint": "^9.26.0",
+    "eslint-import-resolver-typescript": "^4.3.4",
+    "eslint-plugin-import": "^2.31.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.3"
+  }
+}

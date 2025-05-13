@@ -1,9 +1,9 @@
 // src: configs/commitlint.config.js
 // @(#) : commitlint configuration for this workspace
 /**
- * @version   1.0.2
+ * @version   1.0.0
  * @author    atsushifx <https://github.com/atsushifx>
- * @since     2025-04-12
+ * @since     2025-05-14
  * @license   MIT
  *
  * @description<<
