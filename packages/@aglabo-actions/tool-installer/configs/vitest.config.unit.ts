@@ -1,8 +1,8 @@
 // @(#) : vitest config for textlint filter rule plugin
 //
 // @version   1.0.0
-// @since     2025-04-12
-// @author    atsushifx <atsushifx@gmail.com>
+// @since     2025-05-14
+// @author    atsushifx <https://github.com/atsushifx>
 // @license   MIT
 //
 // @description<<
@@ -13,7 +13,6 @@
 // <<
 
 // libs
-// libs
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -21,7 +20,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'vitest/config';
 
 // user common config
-import baseConfig from '../../../shared/configs/vitest.config.base';
+import baseConfig from '../../../../shared/configs/vitest.config.base';
 
 // constants
 const __dirname = dirname(fileURLToPath(import.meta.url));

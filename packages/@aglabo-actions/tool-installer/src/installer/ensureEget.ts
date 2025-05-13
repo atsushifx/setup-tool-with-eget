@@ -1,0 +1,7 @@
+// src: /src/installer/ensureEget.ts
+// @(#) : eget インストールモジュール
+//
+// Copyright (c) 2025 Furukawa Atsushi <atsushifx@gmail.com>
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
