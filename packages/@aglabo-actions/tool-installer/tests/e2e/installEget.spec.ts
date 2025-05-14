@@ -1,0 +1,22 @@
+// src: tests/installer/installEget.e2e.test.ts
+// @(#) : eget インストールテスト: egetを実際にインストールできるかのテスト
+//
+// Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+import { exec, execFile } from 'child_process';
+import { promisify } from 'util';
+import { describe, expect, it } from 'vitest';
+import { installEget } from '../../src/installer/installEget';
+
+const runFile = promisify(execFile);
+
+describe('installEget (E2E)', () => {
+  it('should install eget to Windows and return version', async () => {
+    const egetPath = await installEget();
+    const { stdout } = await runFile(egetPath, ['--version']);
+    expect(stdout.trim()).toMatch(/\d+\.\d+\.\d+/); // e.g. 1.3.4
+  }, 60_000); // wingetやcurlが遅い場合に備えてタイムアウト長めに
+});
