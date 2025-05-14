@@ -9,7 +9,7 @@
 // src/installer/__tests__/ensureEget.spec.ts
 import commandExists from 'command-exists';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { isEgetAvailable } from '../ensureEget';
+import { getExistEget } from '../egetInstallHelper';
 
 // command-exists を default モックとして差し替え
 vi.mock('command-exists', () => ({
@@ -22,14 +22,14 @@ describe('isEgetAvailable', () => {
   });
 
   it('eget が存在する場合 true', async () => {
-    vi.mocked(commandExists).mockResolvedValue(undefined);
-    const result = await isEgetAvailable();
-    expect(result).toBe(true);
+    vi.mocked(commandExists).mockResolvedValue('.tools/bin/eget');
+    const result = await getExistEget();
+    expect(result).toBe('.tools/bin/eget');
   });
 
   it('eget が存在しない場合 false', async () => {
     vi.mocked(commandExists).mockRejectedValue(new Error('not found'));
-    const result = await isEgetAvailable();
-    expect(result).toBe(false);
+    const result = await getExistEget();
+    expect(result).toBe('');
   });
 });

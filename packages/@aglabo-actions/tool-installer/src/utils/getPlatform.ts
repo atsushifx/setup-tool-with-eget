@@ -20,3 +20,5 @@ export function getPlatform(): PlatformType {
   if (raw === 'linux') { return 'linux'; }
   throw new Error(`Unsupported platform: ${raw}`);
 }
+
+export default getPlatform;

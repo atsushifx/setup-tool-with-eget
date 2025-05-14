@@ -6,17 +6,22 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// src/installer/installEget.ts
 import { exec } from 'child_process';
+import commandExists from 'command-exists';
 import { copyFile } from 'fs/promises';
 import { join } from 'path';
 import { promisify } from 'util';
-import { getPlatform, PlatformType } from '../utils/getPlatform';
-import { prepareInstallDirectory } from './prepareInstallDirectory';
+import { getPlatform } from '../utils/getPlatform';
+import { prepareInstallDirectory } from '../utils/prepareInstallDirectory';
 
 const run = promisify(exec);
 
 export async function installEget(): Promise<string> {
+  const existEget = await getExistEget();
+  if (existEget) {
+    return existEget;
+  }
+
   const platform = getPlatform();
   switch (platform) {
     case 'windows':
@@ -58,4 +63,11 @@ async function installEgetLinux(): Promise<string> {
   return targetPath;
 }
 
-export default installEget;
+export async function getExistEget(): Promise<string> {
+  try {
+    const result = await commandExists('eget');
+    return result;
+  } catch {
+    return ''; // falsy
+  }
+}
