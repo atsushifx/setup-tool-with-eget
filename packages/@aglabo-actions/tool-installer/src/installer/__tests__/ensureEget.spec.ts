@@ -6,17 +6,30 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import * as core from '@actions/core';
-import * as io from '@actions/io';
-import * as tc from '@actions/tool-cache';
+// src/installer/__tests__/ensureEget.spec.ts
+import commandExists from 'command-exists';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-// import { ensureEget } from '../ensureEget';
+import { isEgetAvailable } from '../ensureEget';
 
-describe('ensureEget', () => {
+// command-exists を default モックとして差し替え
+vi.mock('command-exists', () => ({
+  default: vi.fn(),
+}));
+
+describe('isEgetAvailable', () => {
   beforeEach(() => {
+    vi.resetAllMocks();
   });
 
-  it('vitest exec test', async () => {
-    expect(1).toBe(1);
+  it('eget が存在する場合 true', async () => {
+    vi.mocked(commandExists).mockResolvedValue(undefined);
+    const result = await isEgetAvailable();
+    expect(result).toBe(true);
+  });
+
+  it('eget が存在しない場合 false', async () => {
+    vi.mocked(commandExists).mockRejectedValue(new Error('not found'));
+    const result = await isEgetAvailable();
+    expect(result).toBe(false);
   });
 });
