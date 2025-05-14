@@ -10,7 +10,7 @@
 // @description<<
 // ESLint configuration for markdown-to-ast-with-toml project.
 // Extends settings from the shared base ESLint config.
-//<<
+// <<
 
 // libs
 import path from 'path';
@@ -20,7 +20,7 @@ import tsParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import';
 
 // import form common base config
-import baseConfig from '../../../shared/configs/eslint.config.base.js';
+import baseConfig from '../../../../shared/configs/eslint.config.base.js';
 
 // settings
 export default [

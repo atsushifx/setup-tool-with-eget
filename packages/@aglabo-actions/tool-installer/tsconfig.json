@@ -1,10 +1,10 @@
 {
-  "@(#)": "tsconfig.json: for @textlint/e2etest",
+  "@(#)": "tsconfig.json: for @aglabo-actions/tool-installer",
   "extends": "../../../shared/configs/tsconfig.base.json",
   // directory definition
   "compilerOptions": {
     // in/out dir
-    "rootDir": ".",
+    "rootDir": "./",
     "outDir": "lib",
     // aliases
     "baseUrl": "./",

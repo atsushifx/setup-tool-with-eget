@@ -14,12 +14,13 @@
     "typescript",
     "monorepo"
   ],
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.11.0",
   "devDependencies": {
     "@commitlint/types": "^19.8.1",
     "@eslint/js": "^9.26.0",
     "@secretlint/secretlint-rule-preset-recommend": "^9.3.2",
     "@textlint/types": "^14.7.1",
+    "@types/node": "^22.15.18",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
     "cspell": "^8.19.4",
