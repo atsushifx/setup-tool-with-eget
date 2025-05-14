@@ -6,10 +6,10 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+import { installEget } from '@/helper/egetInstallHelper';
 import { exec, execFile } from 'child_process';
 import { promisify } from 'util';
 import { describe, expect, it } from 'vitest';
-import { installEget } from '../../src/installer/installEget';
 
 const runFile = promisify(execFile);
 

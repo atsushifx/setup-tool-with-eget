@@ -6,13 +6,13 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+import { getPlatform } from '@/utils/getPlatform';
+import { prepareInstallDirectory } from '@/utils/prepareInstallDirectory';
 import { exec } from 'child_process';
 import commandExists from 'command-exists';
 import { copyFile } from 'fs/promises';
 import { join } from 'path';
 import { promisify } from 'util';
-import { getPlatform } from '../utils/getPlatform';
-import { prepareInstallDirectory } from '../utils/prepareInstallDirectory';
 
 const run = promisify(exec);
 
