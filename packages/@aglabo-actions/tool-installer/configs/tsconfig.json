@@ -4,18 +4,18 @@
   // directory definition
   "compilerOptions": {
     // in/out dir
-    "rootDir": ".",
+    "rootDir": "../",
     "outDir": "lib",
     // aliases
     "baseUrl": "./",
     "paths": {
       // ローカルのプラグイン、ルール
       "@/*": [
-        "src/*"
+        "../src/*"
       ],
       // Monorepo 共有用
       "@shared/*": [
-        "../../../shared/*"
+        "../../../../shared/*"
       ]
     },
     // incremental build info

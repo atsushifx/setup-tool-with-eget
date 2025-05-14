@@ -1,5 +1,5 @@
 // src: /src/installer/ensureEget.ts
-// @(#) : eget ｲCﾝ匿Xﾄgｰ[ﾙ欣ぞﾞWｭ・[ﾙ
+// @(#) : eget
 //
 // Copyright (c) 2025 Furukawa Atsushi <atsushifx@gmail.com>
 //
