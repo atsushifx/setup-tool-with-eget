@@ -9,16 +9,16 @@
 // src/installer/prepareInstallDirectory.ts
 import * as core from '@actions/core';
 import { mkdir } from 'fs/promises';
-import { join } from 'path';
-import { env } from 'process';
+
+// constants
+import { AgDir_INSTALL_DIR } from '../shared/constants';
 
 /**
  * GitHub Actions 用のツールインストールディレクトリを準備し、PATH に追加する
  * @returns 作成したディレクトリの絶対パス
  */
-export async function prepareInstallDirectory(): Promise<string> {
-  const baseDir = env.GITHUB_WORKSPACE || process.cwd();
-  const installDir = join(baseDir, '.tools', 'bin');
+export async function prepareInstallDirectory(installDir?: string): Promise<string> {
+  installDir ??= AgDir_INSTALL_DIR;
 
   await mkdir(installDir, { recursive: true });
   core.addPath(installDir);
