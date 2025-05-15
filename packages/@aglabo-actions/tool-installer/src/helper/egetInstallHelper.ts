@@ -14,6 +14,7 @@ import { copyFile } from 'fs/promises';
 import { join } from 'path';
 import { promisify } from 'util';
 
+// routine
 const run = promisify(exec);
 
 export async function installEget(): Promise<string> {
@@ -57,8 +58,8 @@ async function installEgetLinux(): Promise<string> {
   const installDir = await prepareInstallDirectory();
   const targetPath = join(installDir, 'eget');
 
-  const installCmd = `curl -sSf https://zyedidia.github.io/eget.sh | bash -s -- -d ${installDir}`;
-  await run(installCmd, { shell: `bash'` });
+  const installCmd = `cd ${installDir} && curl -sSf https://zyedidia.github.io/eget.sh | bash`
+  await run(installCmd);
 
   return targetPath;
 }
