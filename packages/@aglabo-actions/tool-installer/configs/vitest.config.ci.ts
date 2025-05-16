@@ -8,7 +8,7 @@
 //
 // @description<<
 //
-// Vitest configuration for running unit tests.
+// Vitest configuration for running E2E Test (CI Test)
 // Designed for TypeScript plugin development (textlint).
 //
 // <<
@@ -22,7 +22,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'vitest/config';
 
 // user common config
-import baseConfig from '../../../shared/configs/vitest.config.base';
+import baseConfig from '../../../../shared/configs/vitest.config.base';
 
 // constants
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -33,18 +33,11 @@ export default defineConfig({
   plugins: [],
   test: {
     ...baseConfig.test,
-    include: [
-      'src/**/*.test.ts',
-      'src/**/*.spec.ts',
-    ],
-    exclude: [
-      'src/**/#*.ts',
-    ],
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@shared': path.resolve(__dirname, '../../../shared'),
+      '@': path.resolve(__dirname, '../src'),
+      '@shared': path.resolve(__dirname, '../../../../shared'),
     },
   },
 });

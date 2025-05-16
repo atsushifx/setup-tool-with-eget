@@ -6,8 +6,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// import
-import { EgetInitializer } from '@/installer/executor/EgetInitializer';
+// libs
 import { execFile } from 'child_process';
 import { promisify } from 'util';
 
