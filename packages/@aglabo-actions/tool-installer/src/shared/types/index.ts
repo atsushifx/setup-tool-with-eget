@@ -6,4 +6,6 @@
 // https://opensource.org/licenses/MIT
 
 // export types
+export * from './AgActionCommon.types';
 export * from './AgActionInstallerHandler.types';
+export * from './AgActionToolConfig.types';

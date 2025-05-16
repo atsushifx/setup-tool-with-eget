@@ -6,16 +6,11 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// --  enum definition
-export enum AgActionInstallerType {
-  EGET_INITIALIZE = 'eget-initialize',
-  EGET = 'eget',
-  SCRIPT = 'script',
-}
+// types
+import type { AgActionInstallerType } from '@shared/types';
 
 // --- type / interface
 export type AgActionInstallOptions = {
-  package: string;
   version?: string;
   targetDir?: string;
   flags?: string[];
