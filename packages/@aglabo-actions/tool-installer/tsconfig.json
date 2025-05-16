@@ -16,7 +16,7 @@
       "@shared/constants": [
         "src/shared/constants"
       ],
-      "@shared/tytpes": [
+      "@shared/types": [
         "src/shared/types"
       ],
       // Monorepo 共有用
