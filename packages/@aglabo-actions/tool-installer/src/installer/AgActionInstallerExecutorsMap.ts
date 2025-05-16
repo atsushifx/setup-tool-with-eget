@@ -7,8 +7,18 @@
 // https://opensource.org/licenses/MIT
 
 // import
-import type { AgActionInstallerExecutor, AgActionInstallerExecutorsMap, AgActionInstallerType } from '@/shared/types';
+import type { AgActionInstallerExecutor, AgActionInstallerExecutorsMap } from '@/shared/types';
+import { AgActionInstallerType } from '@/shared/types';
 
 // executor
+import EgetInitializer from './executor/EgetInitializer';
+import NotSupportedExecutor from './executor/NotSupportExecutor';
 
 // map
+export const AgExecutorsMap: AgActionInstallerExecutorsMap = {
+  [AgActionInstallerType.EGET_INITIALIZE]: new EgetInitializer(),
+  [AgActionInstallerType.EGET]: new NotSupportedExecutor(),
+  [AgActionInstallerType.SCRIPT]: new NotSupportedExecutor(),
+};
+
+//

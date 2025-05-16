@@ -10,7 +10,7 @@
 import commandExists from 'command-exists';
 import type { MockedFunction } from 'vitest';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { getExistEget } from '../egetInstallHelper';
+import { getExistEget } from '../../installer/executor/EgetInitializer';
 
 // 元の関数（モック対象）があるモジュール
 vi.mock('command-exists', () => {
