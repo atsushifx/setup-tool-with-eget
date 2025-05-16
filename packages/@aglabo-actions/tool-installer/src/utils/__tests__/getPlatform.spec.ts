@@ -7,9 +7,14 @@
 // https://opensource.org/licenses/MIT
 
 import * as os from 'os';
+
+// vitest
 import { describe, expect, it, vi } from 'vitest';
+
+// test unit
 import { getPlatform } from '../getPlatform';
 
+// Mock
 vi.mock('os');
 
 describe('getPlatform', () => {

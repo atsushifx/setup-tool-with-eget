@@ -6,13 +6,16 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// import
-import { EgetInitializer } from '@/installer/executor/EgetInitializer';
+// libs
 import { execFile } from 'child_process';
-import commandExists from 'command-exists';
 import { promisify } from 'util';
+
+import commandExists from 'command-exists';
+// vitest
 import { describe, expect, it } from 'vitest';
 
+// test unit
+import { EgetInitializer } from '@/installer/executor/EgetInitializer';
 // types
 import { AgActionInstallerExecutor, AgActionInstallOptions } from '@shared/types';
 

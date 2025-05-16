@@ -7,19 +7,24 @@
 // https://opensource.org/licenses/MIT
 // tests/installer/prepareInstallDirectory.spec.ts
 
-// tests/installer/prepareInstallDirectory.spec.ts
-import * as core from '@actions/core';
+// libs
 import * as fs from 'fs/promises';
-import { join } from 'path';
-import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+
+import * as core from '@actions/core';
+// vitest
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+// test unit
 import { prepareInstallDirectory } from '../prepareInstallDirectory';
 
+// Mock
 const MockInstallDir = '/fake/installer/.tool/bin';
 
 vi.mock('fs/promises', () => ({
   mkdir: vi.fn().mockResolvedValue(undefined),
 }));
 
+// test main
 describe('prepareInstallDirectory', () => {
   beforeEach(() => {
     vi.resetAllMocks();

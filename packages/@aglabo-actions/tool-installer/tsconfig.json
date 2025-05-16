@@ -13,16 +13,16 @@
       "@/*": [
         "src/*"
       ],
+      // Monorepo 共有用
+      "@shared/*": [
+        "../../../shared/*"
+      ],
       "@shared/constants": [
         "src/shared/constants"
       ],
       "@shared/types": [
         "src/shared/types"
-      ],
-      // Monorepo 共有用
-      "@shared/*": [
-        "../../../shared/*"
-      ], //
+      ]
     },
     // incremental build info
     "tsBuildInfoFile": ".cache/tsbuildinfo"

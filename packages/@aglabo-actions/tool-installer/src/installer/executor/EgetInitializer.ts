@@ -6,16 +6,18 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// types
-import { AgActionInstallerExecutor, AgActionInstallOptions } from '@shared/types';
-
-// import
-import { getPlatform } from '@/utils/getPlatform';
-import { prepareInstallDirectory } from '@/utils/prepareInstallDirectory';
+// libs
 import { exec } from 'child_process';
-import commandExists from 'command-exists';
 import { join } from 'path';
 import { promisify } from 'util';
+
+import commandExists from 'command-exists';
+
+// modules
+import { getPlatform } from '@/utils/getPlatform';
+import { prepareInstallDirectory } from '@/utils/prepareInstallDirectory';
+// types
+import { AgActionInstallerExecutor, AgActionInstallOptions } from '@shared/types';
 
 // routine
 const run = promisify(exec);
@@ -37,10 +39,8 @@ export class EgetInitializer implements AgActionInstallerExecutor {
       const platform = getPlatform();
       if (platform === 'windows') {
         await this.installWindows(options, installDir);
-      } else if (platform === 'linux') {
-        await this.installLinux(options, installDir);
       } else {
-        throw new Error(`Unsupported platform: ${platform}`);
+        await this.installLinux(options, installDir);
       }
       return true;
     } catch (err) {
@@ -68,7 +68,7 @@ export class EgetInitializer implements AgActionInstallerExecutor {
 
   private async getExistEget(): Promise<boolean> {
     try {
-      const result = await commandExists('eget');
+      await commandExists('eget');
       return true;
     } catch {
       return false; // falsy

@@ -10,5 +10,5 @@
 import { join } from 'path';
 import { env } from 'process';
 
-export const AgDir_BASE_DIR = env.GITHUB_WORKSPACE || process.cwd();
+export const AgDir_BASE_DIR = env.GITHUB_WORKSPACE ?? process.cwd();
 export const AgDir_INSTALL_DIR = join(AgDir_BASE_DIR, '.tools', 'bin');
