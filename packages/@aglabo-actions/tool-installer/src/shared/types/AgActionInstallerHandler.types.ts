@@ -24,3 +24,9 @@ export interface AgActionInstallOptions {
 export interface AgActionInstallerExecutor {
   execute(options: AgActionInstallOptions): Promise<boolean>;
 }
+
+// --- type definition
+export type AgActionInstallerExecutorsMap = Record<
+  AgActionInstallerType,
+  AgActionInstallerExecutor
+>;
