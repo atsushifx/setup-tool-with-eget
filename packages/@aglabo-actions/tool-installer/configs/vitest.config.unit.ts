@@ -36,12 +36,7 @@ export default defineConfig({
     ],
     exclude: [
       'src/**/#*.ts',
-<<<<<<< HEAD:packages/@aglabo-actions/tool-installer/vitest.config.unit.ts
-||||||| parent of c5af35b (config(vitest): vitest config files move to configs):packages/@aglabo-actions/tool-installer/vitest.config.unit.ts
-      'src/**/#__tests__/**/*',
-=======
       'src/**/#*tests__/**/*',
->>>>>>> c5af35b (config(vitest): vitest config files move to configs):packages/@aglabo-actions/tool-installer/configs/vitest.config.unit.ts
     ],
   },
   resolve: {
