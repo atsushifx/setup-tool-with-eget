@@ -41,6 +41,10 @@ export default [
       'test/**/*.ts',
     ],
     languageOptions: {
+      globals: {
+        'NodeJS': 'readonly',
+      },
+      parser: tsParser,
       parserOptions: {
         project: ['./tsconfig.json'],
         tsconfigRootDir: path.resolve(),
