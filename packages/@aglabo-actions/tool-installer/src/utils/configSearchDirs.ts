@@ -6,17 +6,14 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+// --- libs
 import { homedir } from 'os';
 
-// libs
-import { getDelimiter } from './getPlatform';
+// --- types
+import { ConfigType } from '@/shared/types';
 
-// definitions
-// typo
-export enum ConfigType {
-  USER = 'user',
-  SYSTEM = 'system',
-}
+// --- modules
+import { getDelimiter } from './getPlatform';
 
 // functions
 export const configSearchDirs = (appConfig: string, configType: ConfigType): string[] => {
