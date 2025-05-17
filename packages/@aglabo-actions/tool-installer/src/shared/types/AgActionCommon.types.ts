@@ -14,4 +14,10 @@ export enum AgActionInstallerType {
   // WINGET= 'winget',
 }
 
+// Search Config File Type
+export enum ConfigType {
+  USER = 'user',
+  SYSTEM = 'system',
+}
+
 // --  type / interface definition

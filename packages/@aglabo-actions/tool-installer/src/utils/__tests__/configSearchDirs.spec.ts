@@ -17,8 +17,11 @@ vi.mock('os', () => ({
   platform: () => 'linux',
 }));
 
+// types
+import { ConfigType } from '@/shared/types';
+
 // test unit
-import { configSearchDirs, ConfigType } from '../configSearchDirs';
+import { configSearchDirs } from '../configSearchDirs';
 
 //
 let ORIGINAL_ENV: NodeJS.ProcessEnv;
