@@ -20,7 +20,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'vitest/config';
 
 // user common config
-import baseConfig from '../../../shared/configs/vitest.config.base';
+import baseConfig from '../../../../shared/configs/vitest.config.base';
 
 // constants
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -36,12 +36,18 @@ export default defineConfig({
     ],
     exclude: [
       'src/**/#*.ts',
+<<<<<<< HEAD:packages/@aglabo-actions/tool-installer/vitest.config.unit.ts
+||||||| parent of c5af35b (config(vitest): vitest config files move to configs):packages/@aglabo-actions/tool-installer/vitest.config.unit.ts
+      'src/**/#__tests__/**/*',
+=======
+      'src/**/#*tests__/**/*',
+>>>>>>> c5af35b (config(vitest): vitest config files move to configs):packages/@aglabo-actions/tool-installer/configs/vitest.config.unit.ts
     ],
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@shared': path.resolve(__dirname, '../../../shared'),
+      '@': path.resolve(__dirname, '../src'),
+      '@shared': path.resolve(__dirname, '../../../../shared/'),
     },
   },
 });
