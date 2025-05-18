@@ -5,7 +5,11 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// export types
+// export types for  util's function types
+export * from './AgLogger.types';
+export * from './loadConfigs.types';
+
+// export types for agAction
 export * from './AgActionCommon.types';
 export * from './AgActionInstallerHandler.types';
 export * from './AgActionToolConfig.types';

@@ -21,4 +21,8 @@ export function getPlatform(): PlatformType {
   throw new Error(`Unsupported platform: ${raw}`);
 }
 
+export const getDelimiter = (): string => {
+  return getPlatform() === 'windows' ? ';' : ':';
+};
+
 export default getPlatform;

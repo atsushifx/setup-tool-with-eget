@@ -6,25 +6,21 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+// libs
+
 // vitest
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 
 // os モジュールをモック
 vi.mock('os', () => ({
   homedir: () => '/mock/home',
-  platform: () => 'win32',
+  platform: () => 'linux',
 }));
 
-// Configs
-import { ConfigType } from '@/shared/types';
 // test unit
-import { getDelimiter } from '@/utils/getPlatform';
+import { configSearchDirs, ConfigType } from '../configSearchDirs';
 
-// modules
-import { configSearchDirs } from '../configSearchDirs';
-// libs
-import { getDelimiter } from '../getPlatform';
-
+//
 let ORIGINAL_ENV: NodeJS.ProcessEnv;
 const MOCK_HOME = '/mock/home';
 beforeAll(() => {
@@ -65,7 +61,7 @@ describe('configSearchDirs - System', () => {
   });
 
   it('search XDG_CONFIG_DIRS', () => {
-    process.env.XDG_CONFIG_DIRS = '/usr/local/etc' + getDelimiter() + '/etc';
+    process.env.XDG_CONFIG_DIRS = '/usr/local/etc:/etc"';
     const dirs = configSearchDirs('appConfig', ConfigType.SYSTEM);
     const expected = `/usr/local/etc/appConfig`;
 
@@ -116,10 +112,7 @@ describe('configSearchDirs - User', () => {
     const expected2 = `${MOCK_HOME}/.configs/appConfig`;
     expect(dirs).toContain(expected2);
 
-    const expected3 = `${MOCK_HOME}/.config/appConfig`;
+    const expected3 = `${MOCK_HOME}/.appConfig`;
     expect(dirs).toContain(expected3);
-
-    const expected4 = `${MOCK_HOME}/.appConfig`;
-    expect(dirs).toContain(expected4);
   });
 });

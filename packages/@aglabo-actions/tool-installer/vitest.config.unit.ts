@@ -17,6 +17,7 @@
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+
 // system config
 import { defineConfig } from 'vitest/config';
 
@@ -29,6 +30,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // config
 export default defineConfig({
   ...baseConfig,
+  plugins: [],
   test: {
     ...baseConfig.test,
     include: [
