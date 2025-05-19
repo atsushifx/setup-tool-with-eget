@@ -15,11 +15,11 @@ import ConsoleLogger from '@/utils/logger/ConsoleLogger.class';
 const Logger = AgLogger.getLogger(ConsoleLogger);
 
 // main
-export const parseJsoncConfig = (raw: string | undefined): Object => {
+export const parseJsoncConfig = (raw: string | undefined): unknown => {
   if (!raw) {
     return {};
   }
-  const parsed = parseJsonc(raw) as Object;
-  Logger.debug('parsed: ', parsed);
+  const parsed = parseJsonc(raw);
+  Logger.debug('parsed', parsed);
   return parsed;
 };
