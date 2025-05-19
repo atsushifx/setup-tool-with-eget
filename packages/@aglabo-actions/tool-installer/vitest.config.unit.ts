@@ -1,3 +1,4 @@
+// src: ./configs/vitest.config.unit.ts
 // @(#) : vitest config for textlint filter rule plugin
 //
 // @version   1.0.0
