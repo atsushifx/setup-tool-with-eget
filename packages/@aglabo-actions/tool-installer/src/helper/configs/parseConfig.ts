@@ -1,0 +1,25 @@
+// src: ./utils/parseConfig.ts
+// 設定データ解析ユーティリティ
+//
+// Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+// libs
+import { parse as parseJsonc } from 'comment-json';
+
+// Logger
+import AgLogger from '@/utils/logger/AgLogger.class';
+import ConsoleLogger from '@/utils/logger/ConsoleLogger.class';
+const Logger = AgLogger.getLogger(ConsoleLogger);
+
+// main
+export const parseJsoncConfig = (raw: string | undefined): Object => {
+  if (!raw) {
+    return {};
+  }
+  const parsed = parseJsonc(raw) as Object;
+  Logger.debug('parsed: ', parsed);
+  return parsed;
+};

@@ -13,13 +13,12 @@ export enum AgActionInstallerType {
   SCRIPT = 'script',
 }
 
-// interface
-export interface AgActionInstallOptions {
-  package: string;
+// --- type / interface
+export type AgActionInstallOptions = {
   version?: string;
-  targetDir?: string;
-  flags?: string[];
-}
+  installDir?: string;
+  args?: string[];
+};
 
 export interface AgActionInstallerExecutor {
   execute(options: AgActionInstallOptions): Promise<boolean>;
