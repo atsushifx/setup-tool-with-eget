@@ -13,7 +13,7 @@ import { AgActionInstallerType, AgActionInstallOptions } from '@shared/types';
 type AgActionToolConfigBase = {
   installer: AgActionInstallerType;
   tool: string;
-  options: AgActionInstallOptions;
+  options?: AgActionInstallOptions;
 };
 
 /**
