@@ -1,48 +1,66 @@
-# 📦 OSS向けプロジェクトテンプレート（日本語版）
+# Easy Setup Tools Action（日本語版）
 
-このテンプレートは、モダンなOSS開発のための初期構成を素早く立ち上げられるように設計されています。
-
----
-
-## 🛠 特徴
-
-- PowerShellスクリプトによる簡単な開発環境セットアップ
-  - Scoop & pnpm を使った、Windowsでの軽量なセットアップ
-- EditorConfig、.gitignore などプロジェクト開始時に必要なファイルを完備
-  - ミニマムな設定で、後からの拡張も可能
-- lefthook による軽量な Git Hook 環境
-  - gitleaks や secretlint によって API キーなどの漏洩を未然に防止
+> 設定ファイルを使って、CLIツールを簡単にインストールできる GitHub Actions。
+> 現在は [eget](https://github.com/zyedidia/eget) に対応しています。
 
 ---
 
-## 🚀 使用方法
+## 🚀 使い方（GitHub Actions）
 
-1. このテンプレートリポジトリを、自分の GitHub にフォークします。
-2. 自分の環境に合わせて書き換えます（例: LICENSE の名前を自分のハンドル名に変更）。
-3. GitHub 上で新規リポジトリを作成する際に、フォークしたテンプレートから生成します。
-4. 必要な設定ファイルが揃ったリポジトリが自動で作成されます。
-
----
-
-## 🧰 含まれるツール一覧
-
-| ツール名 | 説明 |
-|---------|------|
-| lefthook | Git コミットフックの管理 |
-| delta | Git の差分を視覚的に表示するツール |
-| commitlint | コミットメッセージ形式の検証 |
-| gitleaks | 機密情報の混入を検出するセキュリティツール |
-| secretlint | シークレット情報の混入を検出する静的解析ツール |
-| cspell | スペルチェックツール（コード／ドキュメント向け） |
-| dprint | 高速で拡張性のあるコードフォーマッター（任意） |
-
-> ⚠️ **注意事項**
-> これらのツールは、Scoop や pnpm によりプロジェクトとは独立にインストールされます。
-> バージョン管理やアップデートは、利用者自身で行ってください。
+```yaml
+uses: atsushifx/easy-setup-tools-action@v1
+with:
+  config: .github/tool-configs.json
+  tools: just,fd
+```
 
 ---
 
-## 📄 ライセンス
+## 📂 ツール設定ファイルの例（`tool-configs.json`）
 
-このテンプレートは MIT ライセンスのもとで提供されています。
-詳細は [LICENSE](./LICENSE) をご確認ください。
+```json
+[
+  {
+    "installer": "eget",
+    "name": "just",
+    "package": "casey/just",
+    "options": {
+      "version": "latest",
+      "installDir": ".tools/bin",
+      "args": ["--quiet"]
+    }
+  }
+]
+```
+
+---
+
+## ✅ サポートされているインストーラー
+
+- `eget`（対応済み）
+- `script`（今後対応予定）
+
+---
+
+## 🛠 設定スキーマの仕様
+
+| フィールド           | 説明                                                | 必須 |
+| -------------------- | --------------------------------------------------- | ---- |
+| `installer`          | 使用するインストーラー。現時点では `"eget"` のみ    | ✅   |
+| `name`               | ツールの識別名。`tools:` 入力と一致させる必要あり   | ✅   |
+| `package`            | GitHub 上のパッケージ指定（例: `casey/just`）       | ✅   |
+| `options.version`    | インストールするバージョン。`"latest"` またはタグ名 | ❌   |
+| `options.installDir` | インストール先ディレクトリ（例: `.tools/bin`）      | ❌   |
+| `options.args`       | インストーラーに渡す追加の引数（例: `["--force"]`） | ❌   |
+
+> ❌ 現在、`rename` は **未対応** です。
+
+---
+
+## 📦 補足
+
+- `with.tools` で指定されたツール名だけがインストール対象になります。
+- 複数ツールが同時に指定された場合は並列処理されます。
+- 各設定は `name` をキーとして照合されます。
+
+---
