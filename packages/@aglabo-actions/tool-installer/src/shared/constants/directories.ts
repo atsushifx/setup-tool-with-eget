@@ -7,8 +7,9 @@
 // https://opensource.org/licenses/MIT
 
 // libs
-import { join } from 'path';
+import * as path from 'path';
 import { env } from 'process';
 
 export const AgDir_BASE_DIR = env.GITHUB_WORKSPACE ?? process.cwd();
-export const AgDir_INSTALL_DIR = join(AgDir_BASE_DIR, '.tools', 'bin');
+export const AgDir_INSTALL_DIR = path.join(AgDir_BASE_DIR, '.tools', 'bin');
+export const AgDir_INSTALL_WINGET = path.join(env.LOCALAPPDATA || '', 'Microsoft', 'Winget', 'links');

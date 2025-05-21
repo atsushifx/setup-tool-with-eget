@@ -13,9 +13,9 @@ import { join } from 'path';
 import path from 'path';
 import { promisify } from 'util';
 
-import commandExists from 'command-exists';
-
 // modules
+import { AgDir_INSTALL_WINGET } from '@/shared/constants';
+import { commandExist } from '@/utils/commandExist';
 import { getPlatform } from '@/utils/getPlatform';
 import { prepareInstallDirectory } from '@/utils/prepareInstallDirectory';
 // types
@@ -63,7 +63,7 @@ export class EgetInitializer implements AgActionInstallerExecutor {
     await run(installCommand);
 
     // copy eget form alias to install directory
-    const alias = path.join(process.env.LOCALAPPDATA || '', 'Microsoft', 'Winget', 'links', 'eget.exe');
+    const alias = path.join(AgDir_INSTALL_WINGET, 'eget.exe');
     const targetPath = join(installDir, 'eget.exe');
     await copyFile(alias, targetPath);
 
@@ -76,15 +76,6 @@ export class EgetInitializer implements AgActionInstallerExecutor {
     const installCommand = `cd ${installDir} && curl -sSf https://zyedidia.github.io/eget.sh | bash`;
     await run(installCommand);
     return targetPath;
-  }
-
-  private async getExistEget(): Promise<boolean> {
-    try {
-      const result = await commandExists('eget');
-      return true;
-    } catch {
-      return false; // falsy
-    }
   }
 }
 
