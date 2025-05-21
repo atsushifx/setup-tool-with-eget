@@ -1,5 +1,6 @@
+// src: /shared/configs/tsconfig.base.json
+// @(#) : tsc/tsup 基本設定
 {
-  "@(#)": "Base tsconfig for textlint monorepo with tsup and strict typing",
   "compilerOptions": {
     // ✅ 厳格チェック
     "alwaysStrict": true,
@@ -15,16 +16,16 @@
     "skipLibCheck": true,
     "declaration": true,
     "declarationMap": true,
-    // typesRoots : /shared/configsカラの相対パス
+    // typesRoots : 必要な場合に設定
     // ✅ 出力・ソースマップ
     "sourceMap": false,
     "newLine": "LF",
     "composite": false,
     // incremental build
     "incremental": true,
-    // "tsBuildInfoFile": ".tsbuildinfo",
+    // "tsBuildInfoFile": ".cache/tsbuildinfo",  // 各リポジトリで設定
     // input/output Dir
-    "outDir": "./dist",
+    // "outDir": "./dist",  // 各リポジトリで設定
     // ✅ ライブラリ
     "lib": [
       "ESNext",
@@ -33,19 +34,10 @@
     // ✅ エイリアス設定（←追加！）
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
       // 外部パッケージ用にリザーブ
-      //    "@textlinttest/*": [
-      //
-      //      ]
     },
     // ✅ 型補完
-    "typeRoots": [ // /shared/configsカラの相対パス
-      "../types",
-      "../../node_modules/@types/",
-    ],
+    // "typeRoots": [],   // typesが読み込めない場合に設定
     "types": [
       "node",
     ]

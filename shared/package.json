@@ -1,0 +1,29 @@
+{
+  "name": "@shared",
+  "private": true,
+  "version": "0.1.1",
+  "description": "Internal shared constants, types, and configs for the monorepo",
+  "author": "atsushifx <https://github.com/atsushifx>",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./constants": {
+      "import": "./lib/constants/index.js",
+      "types": "./lib/constants/index.d.ts"
+    },
+    "./types": {
+      "import": "./lib/types/index.js",
+      "types": "./lib/types/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup --config ./tsup.config.ts",
+    "clean": "rimraf lib"
+  }
+}

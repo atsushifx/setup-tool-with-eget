@@ -1,0 +1,37 @@
+// src: /shared/tsconfig.json
+{
+  "extends": "./configs/tsconfig.base.json",
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    ".git",
+    "node_modules",
+    "lib"
+  ],
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "lib",
+    "declaration": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "@shared/constants": [
+        "./constants"
+      ],
+      "@shared/constants/*": [
+        "./constants/*"
+      ],
+      "@shared/types": [
+        "./types"
+      ],
+      "@shared/types/*": [
+        "./types/*"
+      ]
+    },
+    "typeRoots": [
+      "../node_modules/@types/",
+    ],
+    "tsBuildInfoFile": ".cache/tsbuildinfo"
+  }
+}
