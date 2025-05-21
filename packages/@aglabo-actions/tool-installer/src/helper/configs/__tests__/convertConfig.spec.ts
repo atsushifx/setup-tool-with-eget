@@ -11,14 +11,16 @@ import { describe, expect, it } from 'vitest';
 
 // Logger
 import { AgLogLevel } from '@/shared/types';
+import { AgActionInstallerType } from '@/shared/types';
 import { AgLogger } from '@/utils/logger/AgLogger.class';
 
 // test unit
 import { convertConfig } from '../convertConfig';
-
 // module
-import { AgActionInstallerType } from '@/shared/types';
 import { parseJsoncConfig } from '../parseConfig';
+
+// types
+import type { AgActionEgetToolConfig } from '@/shared/types';
 
 // Log definition
 AgLogger.setLogLevel(AgLogLevel.DEBUG);
@@ -105,9 +107,9 @@ describe('check installer type is valid', () => {
       expect(config.installer).toBe(AgActionInstallerType.EGET);
       expect(config.tool).toBe('gitleaks');
       expect(config.package).toBe('gitleaks/gitleaks');
-      expect(config.options.version).toBe('latest');
-      expect(config.options.installDir).toBe('~/bin');
-      expect(config.options.args).toEqual(['--config-path=./.gitleaks.toml']);
+      expect(config.options?.version).toBe('latest');
+      expect(config.options?.installDir).toBe('~/bin');
+      expect(config.options?.args).toEqual(['--config-path=./.gitleaks.toml']);
     });
   });
 });

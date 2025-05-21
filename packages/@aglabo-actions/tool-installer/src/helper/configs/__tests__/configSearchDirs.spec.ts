@@ -15,15 +15,12 @@ vi.mock('os', () => ({
   platform: () => 'win32',
 }));
 
-// Configs
+// libs
 import { ConfigType } from '@/shared/types';
-// test unit
 import { getDelimiter } from '@/utils/getPlatform';
 
-// modules
+// test unit
 import { configSearchDirs } from '../configSearchDirs';
-// libs
-import { getDelimiter } from '../getPlatform';
 
 let ORIGINAL_ENV: NodeJS.ProcessEnv;
 const MOCK_HOME = '/mock/home';

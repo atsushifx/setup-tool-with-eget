@@ -45,7 +45,7 @@ const getEgetConfig = (raw: object): AgActionEgetToolConfig => {
 };
 
 // main function
-export const convertConfig = (raw: object): AgActionToolConfig | undefined => {
+export const convertConfig = (raw: object): AgActionToolConfig => {
   if (!raw) {
     Logger.error('Config is empty');
     throw new Error('Config is empty');
@@ -53,6 +53,9 @@ export const convertConfig = (raw: object): AgActionToolConfig | undefined => {
   const config = raw as AgActionToolConfig;
   const installer = config.installer as AgActionInstallerType;
   checkValidInstaller(installer);
-
-  return raw as AgActionToolConfig;
+  switch (installer) {
+    case AgActionInstallerType.EGET:
+      return getEgetConfig(config);
+  }
+  throw new Error(`Installer type is invalid: ${installer}`);
 };

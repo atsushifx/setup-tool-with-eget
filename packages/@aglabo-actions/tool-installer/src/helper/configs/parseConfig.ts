@@ -14,11 +14,11 @@ import AgLogger from '@/utils/logger/AgLogger.class';
 import ConsoleLogger from '@/utils/logger/ConsoleLogger.class';
 const Logger = AgLogger.getLogger(ConsoleLogger);
 
-export const parseJsoncConfig = (raw: string | undefined): unknown => {
+export const parseJsoncConfig = (raw: string | undefined): object  => {
   if (!raw) {
     return {};
   }
   const parsed = parseJsonc(raw);
   console.debug('parsed', parsed);
-  return parsed;
+  return parsed as object;
 };
