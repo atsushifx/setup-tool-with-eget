@@ -14,11 +14,19 @@ export type PlatformType = 'windows' | 'linux';
  * 現在のOSを 'windows' または 'linux' に正規化して返す。
  * サポート外のOSではエラーをスローする。
  */
-export function getPlatform(): PlatformType {
+export const getPlatform = (): PlatformType => {
   const raw = platform();
-  if (raw === 'win32') { return 'windows'; }
-  if (raw === 'linux') { return 'linux'; }
+  if (raw === 'win32') {
+    return 'windows';
+  }
+  if (raw === 'linux') {
+    return 'linux';
+  }
   throw new Error(`Unsupported platform: ${raw}`);
-}
+};
+
+export const getDelimiter = (): string => {
+  return getPlatform() === 'windows' ? ';' : ':';
+};
 
 export default getPlatform;

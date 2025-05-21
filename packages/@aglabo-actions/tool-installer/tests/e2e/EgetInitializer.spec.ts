@@ -6,21 +6,23 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// import
-import { EgetInitializer } from '@/installer/executor/EgetInitializer';
+// libs
 import { execFile } from 'child_process';
-import commandExists from 'command-exists';
 import { promisify } from 'util';
+
+// vitest
 import { describe, expect, it } from 'vitest';
 
+// test unit
+import { EgetInitializer } from '@/installer/executor/EgetInitializer';
+// modules
+import { commandExist } from '@/utils/commandExist';
 // types
 import { AgActionInstallerExecutor, AgActionInstallOptions } from '@shared/types';
 
 // global var & executor
 const runFile = promisify(execFile);
-const options: AgActionInstallOptions = {
-  package: 'eget',
-};
+const options: AgActionInstallOptions = {};
 const initializer: AgActionInstallerExecutor = new EgetInitializer();
 
 // tests
@@ -31,7 +33,7 @@ describe('EgetInitializer (E2E)', () => {
   }, 60_000);
 
   it('should have eget available and report a valid version', async () => {
-    const exists = await commandExists('eget');
+    const exists = await commandExist('eget');
     expect(exists).toBeTruthy();
 
     const { stdout } = await runFile('eget', ['--version']);

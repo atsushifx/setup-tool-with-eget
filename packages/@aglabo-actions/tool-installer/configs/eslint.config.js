@@ -21,7 +21,6 @@ import importPlugin from 'eslint-plugin-import';
 
 // import form common base config
 import baseConfig from '../../../../shared/configs/eslint.config.base.js';
-
 // settings
 export default [
   {
@@ -42,6 +41,10 @@ export default [
       'test/**/*.ts',
     ],
     languageOptions: {
+      globals: {
+        'NodeJS': 'readonly',
+      },
+      parser: tsParser,
       parserOptions: {
         project: ['./tsconfig.json'],
         tsconfigRootDir: path.resolve(),

@@ -1,3 +1,4 @@
+// src: ./configs/vitest.config.unit.ts
 // @(#) : vitest config for textlint filter rule plugin
 //
 // @version   1.0.0
@@ -7,7 +8,7 @@
 //
 // @description<<
 //
-// Vitest configuration for running unit tests.
+// Vitest configuration for running E2E Test (CI Test)
 // Designed for TypeScript plugin development (textlint).
 //
 // <<
@@ -16,11 +17,12 @@
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+
 // system config
 import { defineConfig } from 'vitest/config';
 
 // user common config
-import baseConfig from '../../../shared/configs/vitest.config.base';
+import baseConfig from '../../../../shared/configs/vitest.config.base';
 
 // constants
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -28,20 +30,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // config
 export default defineConfig({
   ...baseConfig,
+  plugins: [],
   test: {
     ...baseConfig.test,
-    include: [
-      'src/**/*.test.ts',
-      'src/**/*.spec.ts',
-    ],
-    exclude: [
-      'src/**/#*.ts',
-    ],
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@shared': path.resolve(__dirname, '../../../shared'),
+      '@': path.resolve(__dirname, '../src'),
+      '@shared': path.resolve(__dirname, '../../../../shared'),
     },
   },
 });

@@ -68,9 +68,9 @@ importers:
       '@actions/tool-cache':
         specifier: ^2.0.2
         version: 2.0.2
-      command-exists:
-        specifier: ^1.2.9
-        version: 1.2.9
+      comment-json:
+        specifier: ^4.2.5
+        version: 4.2.5
     devDependencies:
       '@types/command-exists':
         specifier: ^1.2.3
@@ -1036,9 +1036,6 @@ packages:
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
-
-  command-exists@1.2.9:
-    resolution: {integrity: sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==}
 
   commander@13.1.0:
     resolution: {integrity: sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==}
@@ -3393,8 +3390,6 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
-
-  command-exists@1.2.9: {}
 
   commander@13.1.0: {}
 

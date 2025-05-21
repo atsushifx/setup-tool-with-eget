@@ -7,12 +7,15 @@
 // https://opensource.org/licenses/MIT
 
 // import
-import type { AgActionInstallerExecutor, AgActionInstallerExecutorsMap } from '@/shared/types';
+
 import { AgActionInstallerType } from '@/shared/types';
 
 // executor
 import EgetInitializer from './executor/EgetInitializer';
 import NotSupportedExecutor from './executor/NotSupportExecutor';
+
+// type
+import type { AgActionInstallerExecutorsMap } from '@/shared/types';
 
 // map
 export const AgExecutorsMap: AgActionInstallerExecutorsMap = {

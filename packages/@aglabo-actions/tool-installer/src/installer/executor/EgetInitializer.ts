@@ -6,16 +6,20 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// types
-import { AgActionInstallerExecutor, AgActionInstallOptions } from '@shared/types';
+// libs
+import { exec } from 'child_process';
+import { copyFile, mkdir } from 'fs/promises';
+import { join } from 'path';
+import path from 'path';
+import { promisify } from 'util';
 
-// import
+// modules
+import { AgDir_INSTALL_WINGET } from '@/shared/constants';
+import { commandExist } from '@/utils/commandExist';
 import { getPlatform } from '@/utils/getPlatform';
 import { prepareInstallDirectory } from '@/utils/prepareInstallDirectory';
-import { exec } from 'child_process';
-import commandExists from 'command-exists';
-import { join } from 'path';
-import { promisify } from 'util';
+// types
+import { AgActionInstallerExecutor, AgActionInstallOptions } from '@shared/types';
 
 // routine
 const run = promisify(exec);
@@ -23,12 +27,14 @@ const run = promisify(exec);
 export class EgetInitializer implements AgActionInstallerExecutor {
   public async execute(options: AgActionInstallOptions): Promise<boolean> {
     // already installed eget
-    if (await this.getExistEget()) {
+    if (await commandExist('eget')) {
       return true;
     }
 
     // create install directory
     const installDir = await prepareInstallDirectory();
+    console.debug('Install directory: ', installDir);
+
     if (!installDir) {
       return false;
     }
@@ -37,10 +43,8 @@ export class EgetInitializer implements AgActionInstallerExecutor {
       const platform = getPlatform();
       if (platform === 'windows') {
         await this.installWindows(options, installDir);
-      } else if (platform === 'linux') {
-        await this.installLinux(options, installDir);
       } else {
-        throw new Error(`Unsupported platform: ${platform}`);
+        await this.installLinux(options, installDir);
       }
       return true;
     } catch (err) {
@@ -50,11 +54,19 @@ export class EgetInitializer implements AgActionInstallerExecutor {
   }
 
   private async installWindows(options: AgActionInstallOptions, installDir: string): Promise<string> {
-    const targetPath = join(installDir, 'eget.exe');
+    // install eget to temp
+    const tmpInstallDir = 'c:\\temp\\eget';
+    await mkdir(installDir, { recursive: true });
 
     const installCommand =
-      `winget install --id=ZacharyYedidia.Eget --accept-package-agreements --accept-source-agreements --location ${installDir} --force`;
+      `winget install --id=ZacharyYedidia.Eget --accept-package-agreements --accept-source-agreements --location ${tmpInstallDir} --force`;
     await run(installCommand);
+
+    // copy eget form alias to install directory
+    const alias = path.join(AgDir_INSTALL_WINGET, 'eget.exe');
+    const targetPath = join(installDir, 'eget.exe');
+    await copyFile(alias, targetPath);
+
     return targetPath;
   }
 
@@ -64,15 +76,6 @@ export class EgetInitializer implements AgActionInstallerExecutor {
     const installCommand = `cd ${installDir} && curl -sSf https://zyedidia.github.io/eget.sh | bash`;
     await run(installCommand);
     return targetPath;
-  }
-
-  private async getExistEget(): Promise<boolean> {
-    try {
-      const result = await commandExists('eget');
-      return true;
-    } catch {
-      return false; // falsy
-    }
   }
 }
 

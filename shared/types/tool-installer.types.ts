@@ -2,7 +2,7 @@
 // @(#) : textlint plugin markdown types
 //
 // @version   1.0.0
-// @since     2025-05-q4
+// @since     2025-05-14
 // @author    atsushifx <https://github.com/atsushifx>
 // @license   MIT
 //

@@ -29,13 +29,13 @@
     "check:dprint": "dprint check",
     "check:types": "tsc --noEmit",
     "check:spellcheck": "pnpm exec cspell --config .vscode/cspell.json",
-    "lint": "pnpm exec eslint --cache --cache-location .cache/eslint-cache/ ",
+    "lint": "pnpm exec eslint  --config ./configs/eslint.config.js --cache --cache-location .cache/eslint-cache/",
     "lint:fix": "pnpm run lint -- --fix",
     "lint:types": "pnpm exec eslint --config ./configs/eslint.config.typed.js --cache --cache-location .cache/eslint-cache/ ",
     "lint:secrets": "secretlint --maskSecrets --secretlintignore .gitignore **/*",
     "test": "pnpm run test:develop && pnpm run test:ci",
-    "test:ci": "pnpm exec vitest run --config ./vitest.config.ci.ts",
-    "test:develop": "pnpm exec vitest run --config ./vitest.config.unit.ts ",
+    "test:develop": "pnpm exec vitest run --config ./configs/vitest.config.unit.ts ",
+    "test:ci": "pnpm exec vitest run --config ./configs/vitest.config.ci.ts",
     "test:watch": "pnpm exec vitest --watch",
     "sync:configs": "bash ../../../scripts/sync_configs.sh . "
   },
@@ -47,7 +47,7 @@
     "@actions/core": "^1.11.1",
     "@actions/io": "^1.1.3",
     "@actions/tool-cache": "^2.0.2",
-    "command-exists": "^1.2.9"
+    "comment-json": "^4.2.5"
   },
   "devDependencies": {
     "@types/command-exists": "^1.2.3"

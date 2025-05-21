@@ -6,26 +6,24 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// enum definition
+// --  enum definition
 export enum AgActionInstallerType {
   EGET_INITIALIZE = 'eget-initialize',
   EGET = 'eget',
   SCRIPT = 'script',
 }
 
-// interface
-export interface AgActionInstallOptions {
-  package: string;
+// --- type / interface
+export type AgActionInstallOptions = {
   version?: string;
-  targetDir?: string;
-  flags?: string[];
-}
+  installDir?: string;
+  args?: string[];
+};
 
-export interface AgActionInstallerExecutor {
+export type AgActionInstallerExecutor = {
   execute(options: AgActionInstallOptions): Promise<boolean>;
-}
+};
 
-// --- type definition
 export type AgActionInstallerExecutorsMap = Record<
   AgActionInstallerType,
   AgActionInstallerExecutor

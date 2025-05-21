@@ -6,9 +6,10 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// src/installer/prepareInstallDirectory.ts
-import * as core from '@actions/core';
+// libs
 import { mkdir } from 'fs/promises';
+
+import * as core from '@actions/core';
 
 // constants
 import { AgDir_INSTALL_DIR } from '../shared/constants';
@@ -17,14 +18,28 @@ import { AgDir_INSTALL_DIR } from '../shared/constants';
  * GitHub Actions 用のツールインストールディレクトリを準備し、PATH に追加する
  * @returns 作成したディレクトリの絶対パス
  */
-export async function prepareInstallDirectory(installDir?: string): Promise<string> {
+export const prepareInstallDirectory = async (
+  installDir?: string,
+): Promise<string> => {
   installDir ??= AgDir_INSTALL_DIR;
 
-  await mkdir(installDir, { recursive: true });
-  core.addPath(installDir);
+  try {
+    await mkdir(installDir, { recursive: true });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    core.setFailed(`Failed to create directory: "${installDir}": ${message}`);
+    throw err;
+  }
+
+  try {
+    core.addPath(installDir);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    core.setFailed(`Failed to add "${installDir}" to PATH: ${message}`);
+    throw err;
+  }
+
   core.info(`Added ${installDir} to PATH`);
-
   return installDir;
-}
-
+};
 export default prepareInstallDirectory;
