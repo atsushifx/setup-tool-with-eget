@@ -9,10 +9,8 @@
 // libs
 import { mkdir } from 'fs/promises';
 
-import * as core from '@actions/core';
-
 // constants
-import { AgDir_INSTALL_DIR } from '../shared/constants';
+import { AgActions_DEFAULT_INSTALL_DIR } from '@shared/constants';
 
 /**
  * GitHub Actions 用のツールインストールディレクトリを準備し、PATH に追加する
@@ -21,7 +19,7 @@ import { AgDir_INSTALL_DIR } from '../shared/constants';
 export const prepareInstallDirectory = async (
   installDir?: string,
 ): Promise<string> => {
-  installDir ??= AgDir_INSTALL_DIR;
+  installDir ??= AgActions_DEFAULT_INSTALL_DIR;
 
   try {
     await mkdir(installDir, { recursive: true });

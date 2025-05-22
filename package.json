@@ -35,8 +35,8 @@
   },
   "scripts": {
     "build": "pnpm run build:cjs && pnpm run build:esm",
-    "build:cjs": "tsup --config tsup.config.ts",
     "build:esm": "tsup --config tsup.config.module.ts",
+    "build:cjs": "tsup --config tsup.config.ts",
     "clean": "rimraf lib module",
     "format:dprint": "dprint fmt",
     "check:dprint": "dprint check",

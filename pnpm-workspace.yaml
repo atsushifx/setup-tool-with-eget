@@ -1,3 +1,5 @@
+# src; pnpm-workspace.yaml
+# @(#) : pnpmによるmonorepo設定
 packages:
   - apps/**
   - packages/**

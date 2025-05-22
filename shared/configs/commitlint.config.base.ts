@@ -16,10 +16,10 @@
  */
 
 // type check for typescript
-// import type { UserConfig } from '@commitlint/types'//;
+import type { UserConfig } from '@commitlint/types'; // ;
 
 // commit lint common configs
-const baseConfig = {
+const baseConfig: UserConfig = {
   extends: ['@commitlint/config-conventional'],
   rules: {
     'type-enum': [2, 'always', [

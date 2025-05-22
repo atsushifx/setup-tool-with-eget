@@ -65,7 +65,7 @@ export default [
     settings: {
       'import/resolver': {
         typescript: {
-          project: ['./tsconfig.json'],
+          project: [require.resolve('./tsconfig.json')],
         },
         node: {
           moduleDirectory: ['node_modules', 'src/'],

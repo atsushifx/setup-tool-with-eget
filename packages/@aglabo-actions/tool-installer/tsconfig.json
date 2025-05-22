@@ -1,32 +1,6 @@
 {
   "@(#)": "tsconfig.json: for @aglabo-actions/tool-installer",
   "extends": "../../../shared/configs/tsconfig.base.json",
-  // directory definition
-  "compilerOptions": {
-    // in/out dir
-    "rootDir": "./",
-    "outDir": "lib",
-    // aliases
-    "baseUrl": "./",
-    "paths": {
-      // ローカルのプラグイン、ルール
-      "@/*": [
-        "src/*"
-      ],
-      // Monorepo 共有用
-      "@shared/*": [
-        "../../../shared/*"
-      ],
-      "@shared/constants": [
-        "src/shared/constants"
-      ],
-      "@shared/types": [
-        "src/shared/types"
-      ]
-    },
-    // incremental build info
-    "tsBuildInfoFile": ".cache/tsbuildinfo"
-  },
   // files
   "include": [
     "src/**/*",
@@ -38,6 +12,27 @@
     "lib",
     "module"
   ],
+  // compiler options
+  "compilerOptions": {
+    // in/out dir
+    "rootDir": "./",
+    "outDir": "lib",
+    // aliases
+    "baseUrl": "./",
+    "paths": {
+      // ローカルのプラグイン、ルール
+      "@/*": [
+        "src/*"
+      ],
+    },
+    // types
+    "typeRoots": [
+      "../../../node_modules/@types/",
+      "./src/shared/types/",
+    ],
+    // incremental build info
+    "tsBuildInfoFile": ".cache/tsbuildinfo"
+  },
   // references
   "references": []
 }
