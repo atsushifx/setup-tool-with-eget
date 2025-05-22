@@ -1,5 +1,6 @@
 // src: /src/shared/types/index.ts
-// @(#) : 型定義ばれるファイル
+// @(#) : 型定義 バレルファイル
+//
 // Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
 //
 // This software is released under the MIT License.
@@ -7,7 +8,6 @@
 
 // export types for  util's function types
 export * from './AgLogger.types';
-export * from './loadConfigs.types';
 
 // export types for agAction
 export * from './AgActionCommon.types';

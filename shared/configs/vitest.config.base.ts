@@ -24,7 +24,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, '.'), // ルートパスとしての "@"
-      '@textlinttest': resolve(__dirname, './textlinttest'), // 安全のため明示的に './' を追加
     },
   },
   test: {

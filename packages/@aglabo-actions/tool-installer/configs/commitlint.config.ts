@@ -1,31 +1,23 @@
 // src: commitlint.config.ts
 // @(#) : commitlint configuration for this workspace
-/**
- * @version   1.0.0
- * @author    atsushifx <atsushifx@gmail.com>
- * @since     2025-04-12
- * @license   MIT
- *
- * @description<<
- *
- * This file defines commitlint rules for this project.
- * It loads the standard configuration from @commitlint/config-conventional
- * and applies a formatter for CLI output.
- *
- * <<
- */
+//
+// Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
 
-// type
+// import commitlint config type
 import type { UserConfig } from '@commitlint/types';
 
-// base Config
-import baseConfig from '../../../../shared/configs/commitlint.config.base';
+// import base Config
+import { default as baseConfig } from '../../../../shared/configs/commitlint.config.base.js'; // ← .js拡張子を必ず付ける
 
-// config
 const config: UserConfig = {
   ...baseConfig,
   rules: {
     ...baseConfig.rules,
+    // 必要ならここでプロジェクト固有ルールを追加・上書き
+    // 'header-max-length': [2, 'always', 72], など
   },
 };
 

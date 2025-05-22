@@ -1,21 +1,17 @@
-// @(#) : tsup config
-/**
- * @version   1.0.0
- * @author    atsushifx <https://github.com/atsushifx>
- * @since     2025-05-14
- * @license   MIT
- *
- * @description<<
- *
- * Base configuration for tsup bundler, used for building the project with both ESM and CommonJS outputs.
- * Includes setup for sourcemaps, declaration files, and exclusion of test files from bundling.
- *
- * <<
- */
+// src: /shared/tsup.config.base.ts
+// @(#) : tsup 基本設定
+//
+// Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
 
+// libs
 import { dirname } from 'path';
-import type { Options } from 'tsup';
 import { fileURLToPath } from 'url';
+
+// types
+import type { Options } from 'tsup';
 
 // ✅ __dirname for ESM
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -29,7 +25,7 @@ export const baseConfig: Options = {
   minify: false,
   splitting: false,
   shims: false,
-  outDir: 'dist',
+  // outDir: 'dist',  // それぞれのsub repositoryで設定
 
   // ⬇ Sub-repo will define this
   entry: [],

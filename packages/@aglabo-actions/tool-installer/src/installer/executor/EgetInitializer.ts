@@ -14,12 +14,13 @@ import path from 'path';
 import { promisify } from 'util';
 
 // modules
-import { AgDir_INSTALL_WINGET } from '@/shared/constants';
+import { AgDir_WINGET_INSTALL_DIR } from '@shared/constants';
+
+import { AgActionInstallerExecutor, AgActionInstallOptions } from '@/shared/types';
 import { commandExist } from '@/utils/commandExist';
 import { getPlatform } from '@/utils/getPlatform';
 import { prepareInstallDirectory } from '@/utils/prepareInstallDirectory';
 // types
-import { AgActionInstallerExecutor, AgActionInstallOptions } from '@shared/types';
 
 // routine
 const run = promisify(exec);

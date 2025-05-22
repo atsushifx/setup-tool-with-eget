@@ -27,13 +27,8 @@ export default [
   js.configs.recommended,
 
   {
-    files: ['src/**/*.ts', 'tests/**/*.ts', 'types/**.*.ts'],
-    ignores: [
-      '**/lib/**',
-      '**/module/**',
-      '**/dist/**',
-      '**/node_modules/**',
-    ],
+    files: ['src/**/*.ts', 'tests/**/*.ts', 'types/**/*.ts'],
+    ignores: ['**/lib/**', '**/module/**', '**/dist/**', '**/node_modules/**'],
     languageOptions: {
       parser: tsparser,
       parserOptions: {
@@ -53,9 +48,7 @@ export default [
     },
     rules: {
       ...tseslint.configs.recommended.rules,
-      // string ts
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-      //
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'import/no-unresolved': 'error',
@@ -67,13 +60,15 @@ export default [
           'caseInsensitive': true,
         },
       }],
-      // ✅ 通常関数を禁止し、関数式に統一
       'func-style': ['error', 'expression'],
     },
     settings: {
       'import/resolver': {
         typescript: {
-          project: ['./tsconfig.json'], // ワークスペース内のtsconfigを指す
+          project: [require.resolve('./tsconfig.json')],
+        },
+        node: {
+          moduleDirectory: ['node_modules', 'src/'],
         },
       },
     },
