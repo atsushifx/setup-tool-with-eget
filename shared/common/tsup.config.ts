@@ -10,7 +10,7 @@
 import { defineConfig } from 'tsup';
 
 // user config
-import { baseConfig } from './configs/tsup.config.base';
+import { baseConfig } from '../configs/tsup.config.base';
 
 export default defineConfig({
   ...baseConfig,
@@ -19,11 +19,11 @@ export default defineConfig({
   sourcemap: true,
   skipNodeModulesBundle: true,
   format: ['esm'],
-  entry: [
-    'src/index.ts',
-    'src/constants/index.ts',
-    'src/types/index.ts',
-  ],
+  entry: {
+    'index': 'index.ts',
+    'constants/index': 'constants/index.ts',
+    'types/index': 'types/index.ts',
+  },
   tsconfig: './tsconfig.json',
   outDir: 'lib',
 });

@@ -8,7 +8,6 @@
 
 // libs
 import * as path from 'path';
-import * as process from 'process';
 import { env } from 'process';
 
 // -- constants definitions --

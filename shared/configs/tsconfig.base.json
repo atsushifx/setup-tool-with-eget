@@ -8,8 +8,10 @@
     "forceConsistentCasingInFileNames": true,
     // ✅ ターゲットとモジュール解決
     "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": false,
     // ✅ 型解決と互換性
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -33,9 +35,7 @@
     ],
     // ✅ エイリアス設定（←追加！）
     "baseUrl": ".",
-    "paths": {
-      // 外部パッケージ用にリザーブ
-    },
+    // "paths": {},      // 外部パッケージ用にリザーブ
     // ✅ 型補完
     // "typeRoots": [],   // typesが読み込めない場合に設定
     "types": [

@@ -1,13 +1,13 @@
 {
   "name": "@shared",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Internal shared constants, types, and configs for the monorepo",
   "author": "atsushifx <https://github.com/atsushifx>",
   "license": "MIT",
   "type": "module",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "import": "./lib/index.js",
