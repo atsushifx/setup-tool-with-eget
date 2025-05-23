@@ -1,5 +1,5 @@
-// src: /shared/tsup.config.ts
-// @(#)  : 型、定数要設定
+// src: /configs/tsup.config.module.ts
+// @(#)  : ESM用
 //
 // Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
 //
@@ -10,20 +10,15 @@
 import { defineConfig } from 'tsup';
 
 // user config
-import { baseConfig } from '../configs/tsup.config.base';
+import { baseConfig } from '../../configs/tsup.config.base';
 
 export default defineConfig({
   ...baseConfig,
   clean: true,
-  dts: true,
-  sourcemap: true,
-  skipNodeModulesBundle: true,
   format: ['esm'],
-  entry: {
-    'index': 'index.ts',
-    'constants/index': 'constants/index.ts',
-    'types/index': 'types/index.ts',
-  },
+  entry: [
+    'index.ts',
+  ],
   tsconfig: './tsconfig.json',
-  outDir: 'lib',
+  outDir: 'module', // for ESM
 });
