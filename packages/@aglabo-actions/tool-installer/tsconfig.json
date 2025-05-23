@@ -26,10 +26,6 @@
       ],
     },
     // types
-    "typeRoots": [
-      "../../../node_modules/@types/",
-      "./src/shared/types/",
-    ],
     // incremental build info
     "tsBuildInfoFile": ".cache/tsbuildinfo"
   },
