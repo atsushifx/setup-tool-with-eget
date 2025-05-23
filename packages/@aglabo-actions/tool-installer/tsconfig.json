@@ -23,7 +23,7 @@
       // ローカルのプラグイン、ルール
       "@/*": [
         "src/*"
-      ],
+      ]
     },
     // types
     // incremental build info
