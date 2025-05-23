@@ -14,22 +14,22 @@
 
 export type InstallMethod = 'eget' | 'script' | 'installer';
 
-export interface InstallOptions {
+export type InstallOptions = {
   version?: string;
   installDir: string;
-}
+};
 
-export interface Installer {
+export type Installer = {
   install(tool: string, opts?: InstallOptions): Promise<void>;
-}
+};
 
-export interface ScriptInstallSpec {
+export type ScriptInstallSpec = {
   url: string;
   shell?: 'bash' | 'pwsh';
-}
+};
 
-export interface InstallerSpec {
+export type InstallerSpec = {
   url: string;
   extract?: 'zip' | 'tar.gz' | 'tgz' | 'tar.bz2' | 'pkg' | '7z' | false;
   commandLine: string;
-}
+};

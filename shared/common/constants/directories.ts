@@ -8,7 +8,7 @@
 
 // libs
 import * as path from 'path';
-import { env } from 'process';
+import * as process from 'process';
 
 // -- constants definitions --
 /**
@@ -21,7 +21,7 @@ import { env } from 'process';
  *
  * 主にパス解決やインストールパスの構築時に参照される。
  */
-export const AgDir_WORKSPACE_DIR = env.GITHUB_WORKSPACE ?? process.cwd();
+export const AgDir_WORKSPACE_DIR = process.env.GITHUB_WORKSPACE ?? process.cwd();
 
 /**
  * @constant AgDir_WINGET_INSTALL_DIR
@@ -29,4 +29,4 @@ export const AgDir_WORKSPACE_DIR = env.GITHUB_WORKSPACE ?? process.cwd();
  * `winget` がインストールしたツールの実行可能ファイルへのリンク (ショートカット) が配置されるディレクトリ。
  * easy-setup-tools-action では、ここからデフォルトインストールディレクトリにリンクをコピーする
  */
-export const AgDir_WINGET_INSTALL_DIR = path.join(env.LOCALAPPDATA ?? '', 'Microsoft', 'Winget', 'links');
+export const AgDir_WINGET_INSTALL_DIR = path.join(process.env.LOCALAPPDATA ?? '', 'Microsoft', 'Winget', 'links');

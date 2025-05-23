@@ -1,20 +1,20 @@
 // src: /shared/configs/eslint.config.base.js
-//
 // @(#) : ESLint flat config for TypeScript workspace
 //
-// @version   1.0.0
-// @since     2025-05-14
-// @author    atsushifx <https://github.com/atsushifx>
-// @license   MIT
+// Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
 //
-// @description<<
-// ESLint configuration using Flat Config format (ESLint v8+).
-// - Enables recommended rules for both JavaScript and TypeScript
-// - Uses @typescript-eslint/parser and plugin for TS support
-// - Declares globals like `console`, `process`, `__dirname`
-// - Applies config to all `*.ts` files
-// <<
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
 
+// libs
+// tsconfig.jsonのパスを絶対パスで指定
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+
+// constants
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// eslint plugin
 import js from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
@@ -65,7 +65,7 @@ export default [
     settings: {
       'import/resolver': {
         typescript: {
-          project: [require.resolve('./tsconfig.json')],
+          project: ['./tsconfig.json'],
         },
         node: {
           moduleDirectory: ['node_modules', 'src/'],
