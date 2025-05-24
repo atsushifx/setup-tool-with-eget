@@ -1,17 +1,10 @@
-# src: ./lefthook.yml
-## @(#) : lefthook config
+# src: ./shared/configs/lefthook.base.yml
+## @(#) : lefthook 基本設定
 #
-# @version  1.0.0
-# @date     2025-05-14
-# @author   atsushifx <https://github.com/atsushifx>
-# @license  MIT
-#
-# @description<<
-#
-# Git hook configuration powered by Lefthook.
-# Ensures commit hygiene with secret scanning and commit message linting.
-#
-#<<
+#/ Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
+#/
+# This software is released under the MIT License.
+# https://opensource.org/licenses/MIT
 
 pre-commit:
   parallel: true

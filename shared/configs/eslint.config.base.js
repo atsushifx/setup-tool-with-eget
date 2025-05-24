@@ -8,7 +8,7 @@
 
 // libs
 // tsconfig.jsonのパスを絶対パスで指定
-import { dirname, resolve } from 'path';
+import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 // constants
