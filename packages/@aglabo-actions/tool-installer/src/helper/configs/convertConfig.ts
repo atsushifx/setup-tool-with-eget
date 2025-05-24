@@ -9,10 +9,6 @@
 // libs
 // type values
 import { AgActionInstallerType } from '@/shared/types';
-// Logger
-import AgLogger from '@/utils/logger/AgLogger.class';
-import ConsoleLogger from '@/utils/logger/ConsoleLogger.class';
-const Logger = AgLogger.getLogger(ConsoleLogger);
 
 // types
 import type { AgActionEgetToolConfig, AgActionToolConfig } from '@/shared/types';
@@ -47,7 +43,6 @@ const getEgetConfig = (raw: object): AgActionEgetToolConfig => {
 // main function
 export const convertConfig = (raw: object): AgActionToolConfig => {
   if (!raw) {
-    Logger.error('Config is empty');
     throw new Error('Config is empty');
   }
   const config = raw as AgActionToolConfig;

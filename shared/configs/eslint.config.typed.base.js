@@ -1,15 +1,10 @@
 // src: /shared/configs/eslint.config.typed.base.js
-//
 // @(#) : ESLint flat config for check TypeScript types.
 //
-// @version   1.0.0
-// @since     2025-05-14
-// @author    atsushifx <atsushifx@gmail.com>
-// @license   MIT
+// Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
 //
-// @description<<
-// ES Lint configs for type check
-// <<
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
 
 // import form common base config
 import baseConfig from './eslint.config.base.js';

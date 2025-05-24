@@ -16,6 +16,9 @@
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+
+// plugins
+
 // system config
 import { defineConfig } from 'vitest/config';
 
@@ -30,6 +33,7 @@ export default defineConfig({
   ...baseConfig,
   test: {
     ...baseConfig.test,
+
     include: [
       'src/**/*.test.ts',
       'src/**/*.spec.ts',
@@ -42,7 +46,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '../src'),
-      '@shared': path.resolve(__dirname, '../../../../shared/'),
+      '@shared': path.resolve(__dirname, '../../../../shared/common'),
     },
   },
 });

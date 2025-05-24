@@ -16,6 +16,7 @@ import { AgActionInstallerType } from '@/shared/types';
 import { ToolConfigManager } from '../ToolConfigManager.class';
 
 // type
+import type { AgActionEgetToolConfig } from '@/shared/types';
 
 // test main
 describe('ToolConfigManager', () => {
@@ -46,7 +47,7 @@ describe('ToolConfigManager', () => {
   });
 
   it('get config from ToolConfigManager', () => {
-    const config = manager.getToolConfig('gitleaks');
+    const config = manager.getToolConfig('gitleaks') as AgActionEgetToolConfig;
     expect(config).toBeDefined();
     expect(config?.tool).toBe('gitleaks');
     expect(config?.installer).toBe('eget');

@@ -21,7 +21,7 @@ import type { AgActionInstallerExecutorsMap } from '@/shared/types';
 export const AgExecutorsMap: AgActionInstallerExecutorsMap = {
   [AgActionInstallerType.EGET_INITIALIZE]: new EgetInitializer(),
   [AgActionInstallerType.EGET]: new NotSupportedExecutor(),
-  [AgActionInstallerType.SCRIPT]: new NotSupportedExecutor(),
+  // [AgActionInstallerType.SCRIPT]: new NotSupportedExecutor(),
 };
 
 //

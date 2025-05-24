@@ -7,7 +7,7 @@
 // https://opensource.org/licenses/MIT
 
 // types
-import { AgActionInstallerType, AgActionInstallOptions } from '@shared/types';
+import { AgActionInstallerType, AgActionInstallOptions } from '@/shared/types';
 
 // --- type / interface
 type AgActionToolConfigBase = {

@@ -1,17 +1,10 @@
-// vitest.config.base.ts
+// src: /shared/configs/vitest.config.base.ts
 // @(#) : vitest config for textlint filter rule plugin
 //
-// @version 1.0.0
-// @since   2025-05-14
-// @author  atsushifx <https://github.com/atsushifx>
-// @license MIT
+// Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
 //
-// @description<<
-//
-// Vitest configuration for running unit tests.
-// Designed for TypeScript plugin development (textlint).
-//
-// <<
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
 
 // vitest
 import { defineConfig } from 'vitest/config';
