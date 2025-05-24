@@ -14,7 +14,7 @@ import path from 'path';
 import { promisify } from 'util';
 
 // modules
-import { AgDir_WINGET_INSTALL_DIR } from '@shared/constants';
+import { AgActions_DEFAULT_TEMP_DIR, AgDir_WINGET_INSTALL_DIR } from '@shared/constants';
 
 import { AgActionInstallerExecutor, AgActionInstallOptions } from '@/shared/types';
 import { commandExist } from '@/utils/commandExist';
@@ -56,7 +56,7 @@ export class EgetInitializer implements AgActionInstallerExecutor {
 
   private async installWindows(options: AgActionInstallOptions, installDir: string): Promise<string> {
     // install eget to temp
-    const tmpInstallDir = 'c:\\temp\\eget';
+    const tmpInstallDir = path.join(AgActions_DEFAULT_TEMP_DIR, 'eget');
     await mkdir(installDir, { recursive: true });
 
     const installCommand =
@@ -64,7 +64,7 @@ export class EgetInitializer implements AgActionInstallerExecutor {
     await run(installCommand);
 
     // copy eget form alias to install directory
-    const alias = path.join(AgDir_INSTALL_WINGET, 'eget.exe');
+    const alias = path.join(AgDir_WINGET_INSTALL_DIR, 'eget.exe');
     const targetPath = join(installDir, 'eget.exe');
     await copyFile(alias, targetPath);
 

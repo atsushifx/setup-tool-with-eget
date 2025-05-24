@@ -16,6 +16,5 @@ export const parseJsoncConfig = (raw: string | undefined): unknown => {
     return {};
   }
   const parsed = parseJsonc(raw);
-  console.debug('parsed', parsed);
   return parsed;
 };
