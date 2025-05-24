@@ -1,16 +1,10 @@
-// eslint.config.js
-//
+// src: configs/eslint.config.js
 // @(#) : ESLint flat config for TypeScript workspace
 //
-// @version   1.0.0
-// @since     2025-04-12
-// @author    atsushifx <atsushifx@gmail.com>
-// @license   MIT
+// Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
 //
-// @description<<
-// ESLint configuration for markdown-to-ast-with-toml project.
-// Extends settings from the shared base ESLint config.
-// <<
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
 
 // libs
 import path from 'path';
@@ -28,6 +22,7 @@ export default [
       'lib/**',
       'module/**',
       'node_modules/**',
+      '.cache/**',
     ],
   },
 
