@@ -1,4 +1,25 @@
 {
+  "name": "@ag-utils/get-platform",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Cross-platform Node.js utility to detect runtime platform.",
+  "author": "atsushifx <https://github.com/atsushifx>",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "module": "./module/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./module/index.js",
+      "types": "./lib/index.d.ts"
+    }
+  },
+  "files": [
+    "lib",
+    "module"
+  ],
   "scripts": {
     "build": "pnpm run build:cjs && pnpm run build:esm",
     "build:cjs": "tsup --config ./configs/tsup.config.ts",
@@ -18,5 +39,13 @@
     "test:ci": "pnpm exec vitest run --config ./configs/vitest.config.ci.ts",
     "test:watch": "pnpm exec vitest --config ./configs/vitest.config.unit.ts --watch",
     "sync:configs": "bash ../../../scripts/sync_configs.sh . "
+  },
+  "engines": {
+    "pnpm": ">=10",
+    "node": ">=20"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
   }
 }
