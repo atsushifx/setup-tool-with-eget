@@ -6,10 +6,15 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// export types and functions
-export * from './getPlatform';
+// import all
+import * as agUtilsObj from './getPlatform';
 
-// export with namespace
-import * as agUtils from './getPlatform';
+// 値オブジェクトから型を設定
+type _agUtilsType = typeof agUtilsObj & {
+  PlatformType: typeof agUtilsObj.PlatformType;
+};
+const agUtils = agUtilsObj as _agUtilsType;
+
+// export
 export { agUtils };
 export default agUtils;

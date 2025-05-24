@@ -12,22 +12,22 @@ import { describe, expect, it } from 'vitest';
 // Mock
 
 // test units
-import { getPlatform } from '../getPlatform';
+import { getPlatform, PlatformType } from '../getPlatform';
 
 // type
 
 // test main
 describe('getPlatform', () => {
   it('returns "windows" for "win32"', () => {
-    expect(getPlatform('win32')).toBe('windows');
+    expect(getPlatform('win32')).toBe(PlatformType.WINDOWS);
   });
 
   it('returns "linux" for "linux"', () => {
-    expect(getPlatform('linux')).toBe('linux');
+    expect(getPlatform('linux')).toBe(PlatformType.LINUX);
   });
 
   it('returns "macos" for "darwin"', () => {
-    expect(getPlatform('darwin')).toBe('macos');
+    expect(getPlatform('darwin')).toBe(PlatformType.MACOS);
   });
 
   it('throws for unsupported platforms by default (strict=true)', () => {
@@ -35,6 +35,6 @@ describe('getPlatform', () => {
   });
 
   it('returns undefined for unsupported platforms with strict=false', () => {
-    expect(getPlatform('illegals', false)).toBeUndefined();
+    expect(getPlatform('illegals', false)).toBe(PlatformType.UNKNOWN);
   });
 });

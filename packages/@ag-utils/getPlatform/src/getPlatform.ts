@@ -10,7 +10,24 @@
 import * as os from 'os';
 
 // type
-export type PlatformType = 'windows' | 'linux' | 'macos' | undefined;
+/**
+ * PlatformType
+ *
+ * OS種別を表すenum。
+ * - `WINDOWS` : Windowsプラットフォーム
+ * - `LINUX`   : Linuxプラットフォーム
+ * - `MACOS`   : macOSプラットフォーム
+ * - `UNKNOWN` : 未サポート・判別不能なプラットフォーム (=0, falsy)
+ *
+ * 文字列値は比較・判定用に使用。
+ * UNKNOWNのみ数値0（falsy）となるため、条件分岐には明示的な比較推奨。
+ */
+export enum PlatformType {
+  WINDOWS = 'windows',
+  LINUX = 'linux',
+  MACOS = 'macos',
+  UNKNOWN = 0,
+}
 
 /**
  * Returns the normalized platform name of the current OS.
@@ -30,18 +47,31 @@ export const getPlatform = (
 ): PlatformType => {
   switch (platform) {
     case 'win32':
-      return 'windows';
+      return PlatformType.WINDOWS;
     case 'linux':
-      return 'linux';
+      return PlatformType.LINUX;
     case 'darwin':
-      return 'macos';
+      return PlatformType.MACOS;
   }
 
   if (strict) {
     throw new Error(`Unsupported platform: ${platform}`);
   }
-  return undefined;
+  return PlatformType.UNKNOWN;
 };
+
+/**
+ * Returns true if the current OS matches the specific platform.
+ *
+ * - isWindows(): 判定対象がWindowsの場合にtrue
+ * - isLinux(): 判定対象がLinuxの場合にtrue
+ * - isMacOS(): 判定対象がmacOSの場合にtrue
+ *
+ * @returns {boolean} true if the current OS is the respective platform.
+ */
+export const isWindows = (): boolean => getPlatform() === PlatformType.WINDOWS;
+export const isLinux = (): boolean => getPlatform() === PlatformType.LINUX;
+export const isMacOS = (): boolean => getPlatform() === PlatformType.MACOS;
 
 /**
  * Returns the appropriate PATH delimiter for the current platform.
@@ -52,7 +82,7 @@ export const getPlatform = (
  * @returns {string} PATH delimiter (';' for Windows, ':' for others)
  */
 export const getDelimiter = (): string => {
-  return (getPlatform() === 'windows') ? ';' : ':';
+  return isWindows() ? ';' : ':';
 };
 
 export default getPlatform;
