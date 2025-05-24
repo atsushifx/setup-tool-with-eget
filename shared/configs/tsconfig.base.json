@@ -6,6 +6,13 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 {
+  "exclude": [
+    ".git",
+    "node_modules",
+    "lib",
+    "module",
+    ".cache"
+  ],
   "compilerOptions": {
     // ✅ 厳格チェック
     "alwaysStrict": true,

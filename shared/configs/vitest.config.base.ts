@@ -36,6 +36,8 @@ export default defineConfig({
       'dist/**',
       'lib/**',
       'module/**',
+      // キャッシュ
+      '.cache/**',
       // コメントアウト
       `**/#*.ts`,
     ],

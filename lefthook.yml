@@ -1,17 +1,10 @@
-# src: ./lefthook.yml
-## @(#) : lefthook config
+# src: ./shared/configs/lefthook.base.yml
+# @(#) : lefthook 基本設定
 #
-# @version  1.0.0
-# @date     2025-05-14
-# @author   atsushifx <https://github.com/atsushifx>
-# @license  MIT
+# Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
 #
-# @description<<
-#
-# Git hook configuration powered by Lefthook.
-# Ensures commit hygiene with secret scanning and commit message linting.
-#
-#<<
+# This software is released under the MIT License.
+# https://opensource.org/licenses/MIT
 
 pre-commit:
   parallel: true
@@ -27,6 +20,24 @@ pre-commit:
         --secretlintignore .gitignore
         --maskSecrets
         "{staged_files}"
+
+    eslint:
+      glob:
+        - "shared/*.{js,ts,tsx}"
+        - "packages/*.{js,ts,tsx}"
+      run: pnpm run lint -- {staged_files}
+
+    eslint-types:
+      glob:
+        - "shared/*.{js,ts,tsx}"
+        - "packages/*.{js,ts,tsx}"
+      run: pnpm run lint:types -- {staged_files}
+
+    lint-spells:
+      glob:
+        - "shared/*.{js,ts,tsx}"
+        - "packages/*.{js,ts,tsx}"
+      run: pnpm run check:spells -- {staged_files}
 
 commit-msg:
   parallel: true

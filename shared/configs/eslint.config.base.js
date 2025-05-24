@@ -28,7 +28,7 @@ export default [
 
   {
     files: ['src/**/*.ts', 'tests/**/*.ts', 'types/**/*.ts'],
-    ignores: ['**/lib/**', '**/module/**', '**/dist/**', '**/node_modules/**'],
+    ignores: ['**/lib/**', '**/module/**', '**/dist/**', '**/node_modules/**', '**/.cache/**'],
     languageOptions: {
       parser: tsparser,
       parserOptions: {
